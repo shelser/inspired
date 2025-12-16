@@ -1,14 +1,17 @@
+import { Container } from '../../Layout/Container/Container';
+
 import { Category } from "./Category/Category";
 import { Gender } from "./Gender/Gender";
 
 
-export const Navigation = () => {
+
+export const Navigation = ({list}) => {
   return (
     <nav>
-      <div className="container">
-        <Gender />
-        <Category />
-      </div>
+      <Container>
+        <Gender list={list} />
+        <Category list={list} />
+      </Container>
     </nav>
   );
 };

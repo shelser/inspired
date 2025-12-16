@@ -1,6 +1,21 @@
+import cn from 'classnames';
+import { NavLink } from 'react-router';
 
-export const Gender = () => {
+import s from './Gender.module.scss';
+
+
+export const Gender = ({list}) => {
   return (
-    <div>Gender</div>
+    <ul className={s.gender}>
+      {list.map(item => (
+        <li key={item.link} className={s.item}>
+          <NavLink 
+            to={item.link}
+            className={({isActive}) => cn(s.link, isActive && s.linkActive)}>
+            {item.title}
+          </NavLink>
+        </li>
+      ))}
+    </ul>
   );
 };

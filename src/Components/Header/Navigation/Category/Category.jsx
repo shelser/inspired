@@ -1,4 +1,5 @@
 import { NavLink, useLocation, useParams } from 'react-router';
+import cn from 'classnames';
 
 import { Container } from '../../../Layout/Container/Container';
 
@@ -6,22 +7,24 @@ import s from './Category.module.scss';
 
 
 export const Category = ({list}) => {
-  const location = useLocation();
-  console.log(location);
-  const params = useParams();
-  console.log(params);
-  console.dir(document)
+  let currentGender = '';
+  const {pathname} = useLocation();
+  currentGender = pathname === '/' ? 'women' : pathname.slice(1);
   
-  
+  const currentCategory = list.find((item) => item.link === currentGender);
 
   return (
-    <Container className={s.category}>
-      <ul className={s.categoryList}>
-        {/* {list.categories.map(item => (
+    <Container>
+      <ul className={s.category}>
+        {currentCategory.categories.map(item => (
           <li className={s.categoryItem} key={item.link}>
-            <NavLink to={item.category.link} className={s.link}></NavLink>
+            <NavLink 
+              to={`${currentCategory.link}/${item.link}`} 
+              className={({isActive}) => cn(s.link, isActive && s.linkActive)}>
+                {item.title}
+            </NavLink>
           </li>
-        ))} */}
+        ))}
       </ul>
     </Container>
   );

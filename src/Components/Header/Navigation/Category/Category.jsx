@@ -1,4 +1,5 @@
-import { NavLink, useLocation, useParams } from 'react-router';
+import { NavLink } from 'react-router';
+import { useSelector } from 'react-redux';
 import cn from 'classnames';
 
 import { Container } from '../../../Layout/Container/Container';
@@ -7,11 +8,10 @@ import s from './Category.module.scss';
 
 
 export const Category = ({list}) => {
-  let currentGender = '';
-  const {pathname} = useLocation();
-  currentGender = pathname === '/' ? 'women' : pathname.slice(1);
+  const gender = useSelector(state => state.navigation.activeGender)
+
   
-  const currentCategory = list.find((item) => item.link === currentGender);
+  const currentCategory = list.find((item) => item.link === gender);
 
   return (
     <Container>

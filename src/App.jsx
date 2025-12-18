@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
 import { fetchNavigation } from "./features/navigationSlice";
+import { fetchColors } from "./features/colorsSlice";
+
 
 
 const router = createBrowserRouter(
@@ -17,8 +19,10 @@ const router = createBrowserRouter(
       <Route index element={<MainPage />} />
       <Route path="women" element={<MainPage gender="women" />} />
       <Route path="men" element={<MainPage gender="men" />} />
+      <Route path="kids" element={<MainPage gender="kids" />} />
       <Route path="women/:category" element={<MainPage gender="women" />} />
       <Route path="men/:category" element={<MainPage gender="men" />} />
+      <Route path="kids/:category" element={<MainPage gender="kids" />} />
       <Route path="*" element={<ErrorPage />} />
     </Route>
   )
@@ -28,7 +32,8 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchNavigation())
+    dispatch(fetchNavigation());
+    dispatch(fetchColors());
   }, [dispatch]);
 
   return (

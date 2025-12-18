@@ -5,18 +5,18 @@ import s from './Gender.module.scss';
 import { useSelector } from 'react-redux';
 
 
-export const Gender = ({list}) => {
-  const gender = useSelector(state => state.navigation.activeGender)
-
+export const Gender = () => {
+  const { genderList, activeGender, categories } = useSelector(state => state.navigation)
+   
   return (
     <ul className={s.gender}>
-      {list.map(item => (
-        <li key={item.link} className={s.item}>
+      {genderList.map(gender => (
+        <li key={gender} className={s.item}>
           <NavLink 
-            to={item.link}
+            to={gender}
             className={({isActive}) => 
-              cn(s.link, (isActive || gender === item.link) && s.linkActive)}>
-            {item.title}
+              cn(s.link, (isActive || activeGender === gender) && s.linkActive)}>
+            {categories[gender].title}
           </NavLink>
         </li>
       ))}

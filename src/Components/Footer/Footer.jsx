@@ -1,13 +1,15 @@
 import cn from 'classnames';
 import { NavLink } from 'react-router';
-
+import { useSelector } from 'react-redux';
 import { Container } from '../Layout/Container/Container';
 
 import s from './Footer.module.scss';
 
 
 
-export const Footer = ({list}) => {
+export const Footer = () => {
+  const { genderList, activeGender, categories } = useSelector(state => state.navigation)
+
   return (
     <footer>
       <Container>
@@ -16,7 +18,25 @@ export const Footer = ({list}) => {
             <h2 className={cn(s.title, s.categoryTitle)}>Каталог</h2>
             
             <ul className={s.categoryList}>
-              {list.map(item => (
+              {genderList?.map(item => (
+                <li className={s.categoryItem} key={item}>
+                  <h3 className={s.categorySubtitle}>
+                    <NavLink to={item} className={s.link}>{categories[item].title}</NavLink>
+                  </h3>
+                  <ul className={s.categorySublist}>
+                    {categories[item]?.list?.map(category => (
+                      <li className={s.categoryItem} key={category.slug}>
+                        <NavLink 
+                          to={`${item}/${category.slug}`} 
+                          className={s.link}>
+                          {category.title}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+              {/* {list.map(item => (
                 <li className={s.categoryItem} key={item.link}>
                   <h3 className={s.categorySubtitle}>
                     <NavLink to={item.link} className={s.link}>{item.title}</NavLink>
@@ -33,7 +53,7 @@ export const Footer = ({list}) => {
                     ))}
                   </ul>
                 </li>
-              ))}
+              ))} */}
               {/* <li className={s.categoryItem}>
                 <h3 className={s.categorySubtitle}>
                   <a href="#" className={s.link}>Женщины</a>

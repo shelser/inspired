@@ -7,19 +7,16 @@ import { Container } from '../../../Layout/Container/Container';
 import s from './Category.module.scss';
 
 
-export const Category = ({list}) => {
-  const gender = useSelector(state => state.navigation.activeGender)
-
+export const Category = () => {
+  const { activeGender, categories } = useSelector(state => state.navigation)
   
-  const currentCategory = list.find((item) => item.link === gender);
-
   return (
     <Container>
       <ul className={s.category}>
-        {currentCategory.categories.map(item => (
-          <li className={s.categoryItem} key={item.link}>
+        {categories[activeGender]?.list?.map(item => (
+          <li className={s.categoryItem} key={item.slug}>
             <NavLink 
-              to={`${currentCategory.link}/${item.link}`} 
+              to={`${activeGender}/${item.slug}`} 
               className={({isActive}) => cn(s.link, isActive && s.linkActive)}>
                 {item.title}
             </NavLink>

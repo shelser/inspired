@@ -1,12 +1,12 @@
 import { Navigation } from "./Navigation/Navigation";
 import { Top } from "./Top/Top";
 
-export const Header = ({list}) => {
+export const Header = () => {
   return (
 
     <header>
       <Top />
-      <Navigation list={list}/>
+      <Navigation />
     </header>
   );
 };

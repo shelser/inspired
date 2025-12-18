@@ -8,7 +8,7 @@ import s from './Footer.module.scss';
 
 
 export const Footer = () => {
-  const { genderList, activeGender, categories } = useSelector(state => state.navigation)
+  const { genderList, categories } = useSelector(state => state.navigation)
 
   return (
     <footer>

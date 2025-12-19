@@ -1,15 +1,12 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router";
 
-// import { Footer } from "./Components/Footer/Footer";
-// import { Header } from "./Components/Header/Header";
 import { ErrorPage } from "./Components/ErrorPage/ErrorPage";
 import { MainPage } from "./Components/MainPage/MainPage";
-import { Root } from "./routes/Root";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-
-import { fetchNavigation } from "./features/navigationSlice";
 import { fetchColors } from "./features/colorsSlice";
+import { fetchNavigation } from "./features/navigationSlice";
+import { Root } from "./routes/Root";
 
 
 
@@ -34,12 +31,12 @@ export const App = () => {
   useEffect(() => {
     dispatch(fetchNavigation());
     dispatch(fetchColors());
+    
   }, [dispatch]);
 
   return (
     <RouterProvider router={router}>
-      {/* <Header />
-      <Footer /> */}
+      
     </RouterProvider>
   );
 };

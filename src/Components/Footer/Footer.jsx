@@ -1,6 +1,7 @@
 import cn from 'classnames';
-import { NavLink } from 'react-router';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router';
+
 import { Container } from '../Layout/Container/Container';
 
 import s from './Footer.module.scss';
@@ -8,7 +9,7 @@ import s from './Footer.module.scss';
 
 
 export const Footer = () => {
-  const { genderList, categories } = useSelector(state => state.navigation)
+  const { genderList, categories } = useSelector(state => state.navigation);
 
   return (
     <footer>

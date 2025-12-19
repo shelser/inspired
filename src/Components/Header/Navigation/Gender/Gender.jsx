@@ -1,13 +1,12 @@
 import cn from 'classnames';
-import { NavLink, useLocation } from 'react-router';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router';
 
 import s from './Gender.module.scss';
-import { useSelector } from 'react-redux';
-
 
 export const Gender = () => {
-  const { genderList, activeGender, categories } = useSelector(state => state.navigation)
-   
+  const { genderList, activeGender, categories } = useSelector(state => state.navigation);
+
   return (
     <ul className={s.gender}>
       {genderList.map(gender => (

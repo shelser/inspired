@@ -1,12 +1,12 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router';
+
+import { setActiveGender } from '../../../features/navigationSlice';
 import { Container } from '../../Layout/Container/Container';
 
 import { Category } from "./Category/Category";
 import { Gender } from "./Gender/Gender";
-import { useEffect } from 'react';
-import { setActiveGender } from '../../../features/navigationSlice';
-
 
 
 export const Navigation = () => {
@@ -16,12 +16,12 @@ export const Navigation = () => {
 
   useEffect(() => {
     
-    dispatch(setActiveGender(currentGender))
-  },[currentGender, dispatch])
+    dispatch(setActiveGender(currentGender));
+  },[currentGender, dispatch]);
 
   return (
     <nav>
-      <Container>
+      <Container >
         <Gender />
         <Category />
       </Container>

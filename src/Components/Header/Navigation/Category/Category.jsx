@@ -1,6 +1,6 @@
-import { NavLink } from 'react-router';
-import { useSelector } from 'react-redux';
 import cn from 'classnames';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router';
 
 import { Container } from '../../../Layout/Container/Container';
 
@@ -8,7 +8,7 @@ import s from './Category.module.scss';
 
 
 export const Category = () => {
-  const { activeGender, categories } = useSelector(state => state.navigation)
+  const { activeGender, categories } = useSelector(state => state.navigation);
   
   return (
     <Container>
@@ -18,7 +18,7 @@ export const Category = () => {
             <NavLink 
               to={`${activeGender}/${item.slug}`} 
               className={({isActive}) => cn(s.link, isActive && s.linkActive)}>
-                {item.title}
+              {item.title}
             </NavLink>
           </li>
         ))}

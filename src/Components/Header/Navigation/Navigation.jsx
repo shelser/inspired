@@ -10,14 +10,14 @@ import { Gender } from "./Gender/Gender";
 
 
 export const Navigation = () => {
-  const dispatch = useDispatch();
-  const {pathname} = useLocation();
-  const currentGender = pathname.split('/')[1] || 'women';
+  // const dispatch = useDispatch();
+  // const {pathname} = useLocation();
+  // const currentGender = pathname.split('/')[2] || 'women';
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    dispatch(setActiveGender(currentGender));
-  },[currentGender, dispatch]);
+  //   dispatch(setActiveGender(currentGender));
+  // },[currentGender, dispatch]);
 
   return (
     <nav>

@@ -16,7 +16,7 @@ export const Category = () => {
         {categories[activeGender]?.list?.map(item => (
           <li className={s.categoryItem} key={item.slug}>
             <NavLink 
-              to={`${activeGender}/${item.slug}`} 
+              to={`/catalog/${activeGender}/${item.slug}`} 
               className={({isActive}) => cn(s.link, isActive && s.linkActive)}>
               {item.title}
             </NavLink>

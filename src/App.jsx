@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Navigate } from "react-router";
 
 import { ErrorPage } from "./Components/ErrorPage/ErrorPage";
 import { MainPage } from "./Components/MainPage/MainPage";
@@ -13,7 +13,8 @@ import { Root } from "./routes/Root";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
-      <Route index element={<MainPage />} />
+      {/* <Route index element={<MainPage />} /> */}
+      <Route index element={<Navigate to="/catalog/women" replace />} />
       <Route path="catalog/:gender/:category?" element={<MainPage />} />
       <Route path="*" element={<ErrorPage />} />
     </Route>

@@ -31,12 +31,27 @@ export const MainPage = () => {
     
   },[gender, category, dispatch]);
 
-  return (
-    <>
-      <Banner data={genderData?.banner} />
+  // return (
+    
+    if (category) {
+      return (
+        <Goods category={category} 
+          categoryData ={genderData?.list.find(item => item.slug === category)}
+        />
+      )
+    } return (
+      <>
+        <Banner data={genderData?.banner} />
+        <Goods category={category} 
+          categoryData ={genderData?.list.find(item => item.slug === category)}
+        />
+      </>
+      )
+    
+      {/* <Banner data={genderData?.banner} />
       <Goods category={category} 
         categoryData ={genderData?.list.find(item => item.slug === category)}
-      />
-    </>
-  );
+      /> */}
+    
+  // );
 };

@@ -4,9 +4,11 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, N
 
 import { ErrorPage } from "./Components/ErrorPage/ErrorPage";
 import { MainPage } from "./Components/MainPage/MainPage";
+import { ProductPage } from "./Components/ProductPage/ProductPage";
 import { fetchColors } from "./features/colorsSlice";
 import { fetchNavigation } from "./features/navigationSlice";
 import { Root } from "./routes/Root";
+
 
 
 
@@ -16,6 +18,7 @@ const router = createBrowserRouter(
       {/* <Route index element={<MainPage />} /> */}
       <Route index element={<Navigate to="/catalog/women" replace />} />
       <Route path="catalog/:gender/:category?" element={<MainPage />} />
+      <Route path="product/:id" element={<ProductPage />} />
       <Route path="*" element={<ErrorPage />} />
     </Route>
   )

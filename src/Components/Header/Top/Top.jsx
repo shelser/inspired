@@ -1,9 +1,11 @@
 import cn from 'classnames';
 import logo from '/src/assets/logo.svg';
+import { NavLink } from 'react-router';
 
 import { Container } from "../../Layout/Container/Container";
 
 import style from './Top.module.scss';
+
 
 
 export const Top = () => {
@@ -12,9 +14,9 @@ export const Top = () => {
       <Container className={style.container}>
         <a href="tel:89304902620" className={cn(style.link, style.phone)}>8 930 490 26 20</a>
 
-        <a href="/" className={style.logo}>
+        <NavLink to="/" className={style.logo}>
           <img src={logo} alt="" />
-        </a>
+        </NavLink>
 
         <div className={style.navigation}>
           <ul className={style.navList}>

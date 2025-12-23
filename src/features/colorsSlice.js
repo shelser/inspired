@@ -6,7 +6,6 @@ export const fetchColors = createAsyncThunk(
   "colors/fetchColors", async () => {
     const response = await fetch(COLORS_URL);
     const data = await response.json();
-    console.log(data);
     return data;
   });
 

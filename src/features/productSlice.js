@@ -7,11 +7,11 @@ export const fetchProduct = createAsyncThunk(
   async (id) => {
     const response = await fetch(`${GOODS_URL}/${id}`);
     const data = await response.json();
-    console.log(data);
         
     return data;
   }
 );
+
 
 const productSlice = createSlice({
   name: 'product',
@@ -22,7 +22,7 @@ const productSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchProduct.pending, state => {
+      .addCase(fetchProduct.pending, (state) => {
         state.status = 'loading';
       })
       .addCase(fetchProduct.fulfilled, (state, action) => {

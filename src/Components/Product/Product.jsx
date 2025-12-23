@@ -7,8 +7,6 @@ import { ColorList } from '../ColorList/ColorList';
 import s from './Product.module.scss';
 
 
-
-
 export const Product = ( {id, pic, title, price, colors} ) => {
   return (
     <article className={s.product}>

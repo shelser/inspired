@@ -37,68 +37,6 @@ export const Footer = () => {
                   </ul>
                 </li>
               ))}
-              {/* {list.map(item => (
-                <li className={s.categoryItem} key={item.link}>
-                  <h3 className={s.categorySubtitle}>
-                    <NavLink to={item.link} className={s.link}>{item.title}</NavLink>
-                  </h3>
-                  <ul className={s.categorySublist}>
-                    {item.categories.map(category => (
-                      <li className={s.categoryItem} key={category.link}>
-                        <NavLink 
-                          to={`${item.link}/${category.link}`} 
-                          className={s.link}>
-                          {category.title}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))} */}
-              {/* <li className={s.categoryItem}>
-                <h3 className={s.categorySubtitle}>
-                  <a href="#" className={s.link}>Женщины</a>
-                </h3>
-                <ul className={s.categorySublist}>
-                  <li className={s.categoryItem}>
-                    <a href="#" className={s.link}>Бюстгальтеры</a>
-                  </li>
-                  <li className={s.categoryItem}>
-                    <a href="#" className={s.link}>Трусы</a>
-                  </li>
-                  <li className={s.categoryItem}>
-                    <a href="#" className={s.link}>Носки</a>
-                  </li>
-                  <li className={s.categoryItem}>
-                    <a href="#" className={s.link}>Халаты</a>
-                  </li>
-                  <li className={s.categoryItem}>
-                    <a href="#" className={s.link}>Термобелье</a>
-                  </li>
-                  <li className={s.categoryItem}>
-                    <a href="#" className={s.link}>Пижамы</a>
-                  </li>
-                </ul>
-              </li>
-              <li className={s.categoryItem}>
-                <div className={s.categorySubtitle}>
-                  <a href="" className={s.link}>Мужчины</a>
-                </div>
-                <ul className={s.categorySublist}>
-                  <li className={s.categoryItem}>
-                    <a href="#" className={s.link}>Трусы</a>
-                  </li>
-                  <li className={s.categoryItem}>
-                    <a href="#" className={s.link}>Носки</a>
-                  </li>
-                  <li className={s.categoryItem}>
-                    <a href="#" className={s.link}>Халаты</a>
-                  </li>
-                  <li className={s.categoryItem}>
-                    <a href="#" className={s.link}>Термобелье</a>
-                  </li>
-                </ul>
-              </li> */}
             </ul>
           </div>
           <div className={s.social}>

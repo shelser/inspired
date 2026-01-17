@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from "react-router";
 
-import Like  from '../../assets/heart.svg?react';
+// import Like  from '../../assets/heart.svg?react';
 import { API_URL } from '../../const';
 import { fetchTopProductCategory } from '../../features/goodsSlice';
 import { fetchProduct } from '../../features/productSlice';
+import { BtnLike } from '../BtnLike/BtnLike';
 import { ColorList } from '../ColorList/ColorList';
 import { Count } from '../Count/Count';
 import { TopGoodsCategory } from '../Goods/TopGoodsCategory/TopGoodsCategory';
@@ -101,7 +102,7 @@ export const ProductPage = () => {
               <button className={s.addCart} type="submit">В корзину</button>
 
               <button className={s.favorite} aria-label="Добавить в избранное" type="button">
-                <Like />
+                <BtnLike />
               </button>
             </div>
           </form>

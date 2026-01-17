@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Navigate } from "react-router";
 
+import { CartPage } from "./Components/CartPage/CartPage"; 
 import { ErrorPage } from "./Components/ErrorPage/ErrorPage";
+import { FavoritePage } from "./Components/FavoritePage/FavoritePage";
 import { MainPage } from "./Components/MainPage/MainPage";
 import { ProductPage } from "./Components/ProductPage/ProductPage";
 import { fetchColors } from "./features/colorsSlice";
@@ -18,6 +20,8 @@ const router = createBrowserRouter(
       {/* <Route index element={<MainPage />} /> */}
       <Route index element={<Navigate to="/catalog/women" replace />} />
       <Route path="catalog/:gender/:category?" element={<MainPage />} />
+      <Route path="/favorite" element={<FavoritePage />} />
+      <Route path="/cart" element={<CartPage />} />
       <Route path="product/:id" element={<ProductPage />} />
       <Route path="*" element={<ErrorPage />} />
     </Route>

@@ -5,16 +5,19 @@ import { useParams } from "react-router";
 
 // import Like  from '../../assets/heart.svg?react';
 import { API_URL } from '../../const';
-import { fetchTopProductCategory } from '../../features/goodsSlice';
+// import { fetchTopProductCategory } from '../../features/goodsSlice';
+import { fetchCategory } from '../../features/goodsSlice';
 import { fetchProduct } from '../../features/productSlice';
 import { BtnLike } from '../BtnLike/BtnLike';
 import { ColorList } from '../ColorList/ColorList';
 import { Count } from '../Count/Count';
-import { TopGoodsCategory } from '../Goods/TopGoodsCategory/TopGoodsCategory';
+// import { TopGoodsCategory } from '../Goods/TopGoodsCategory/TopGoodsCategory';
+import { Goods } from '../Goods/Goods';
 import { Container } from '../Layout/Container/Container';
 import { ProductSize } from '../ProductSize/ProductSize';
 
 import s from './ProductPage.module.scss';
+
 
 
 
@@ -23,6 +26,7 @@ export const ProductPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const {product} = useSelector(state => state.product);
+  const {gender, category} = product;
   
 
   const [selectedColor, setSelectedColor] = useState('');
@@ -52,10 +56,14 @@ export const ProductPage = () => {
     dispatch(fetchProduct(id));
   }, [dispatch, id]);
 
+  // useEffect(() => {
+  //   const {gender, category, id} = product;
+  //   dispatch(fetchTopProductCategory({gender, category, id}));
+  // }, [dispatch, product]);
+
   useEffect(() => {
-    const {gender, category, id} = product;
-    dispatch(fetchTopProductCategory({gender, category, id}));
-  }, [dispatch, product]);
+    dispatch(fetchCategory({gender, category, count: 4, top: true, exclude: id}));
+  },[dispatch, category, gender, id]);
 
   return (
     <>
@@ -100,15 +108,14 @@ export const ProductPage = () => {
                 handleDecrement={handleDecrement}
               />
               <button className={s.addCart} type="submit">В корзину</button>
-
-              <button className={s.favorite} aria-label="Добавить в избранное" type="button">
-                <BtnLike />
-              </button>
+              <BtnLike id={id}/>
+              
             </div>
           </form>
         </Container>
       </section>
-      <TopGoodsCategory />
+      <Goods title="Вам также может понравиться"/>
+      {/* <TopGoodsCategory /> */}
     </>
   );
 };

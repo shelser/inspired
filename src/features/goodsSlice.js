@@ -3,55 +3,57 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { GOODS_URL } from "../const";
 
 export const fetchGender = createAsyncThunk(
-  "goods/fetchGender", async (gender) => {
+  "goods/fetchGender",
+  async (gender) => {
     const url = new URL(GOODS_URL);
-    url.searchParams.append('gender', gender);
+    url.searchParams.append("gender", gender);
     const response = await fetch(url);
     const data = await response.json();
-    
+
     return data;
-  }
+  },
 );
 
 export const fetchCategory = createAsyncThunk(
-  "goods/fetchCategory", async (param) => {
+  "goods/fetchCategory",
+  async (param) => {
     const url = new URL(GOODS_URL);
     for (const key in param) {
       url.searchParams.append(key, param[key]);
     }
     const response = await fetch(url);
     const data = await response.json();
-    
+
     return data;
-  }
+  },
 );
 
-export const fetchTopProductCategory = createAsyncThunk(
-  'goods/fetchTopProductCategory',
-  async ({gender, category, id}) => {
-    const params = {
-      gender: gender,
-      category: category,
-      count: 4,
-      top: true,
-      exclude: id,
-    };
-    const url = new URL(GOODS_URL);
-    Object.entries(params).forEach(([key, value]) => {
-      url.searchParams.append(key, value);
-    });
-    
-    const response = await fetch(url);
-    const data = await response.json();
-        
-    return data;
-  }
-);
+// export const fetchTopProductCategory = createAsyncThunk(
+//   'goods/fetchTopProductCategory',
+//   async ({gender, category, id}) => {
+//     const params = {
+//       gender: gender,
+//       category: category,
+//       count: 4,
+//       top: true,
+//       exclude: id,
+//     };
+//     const url = new URL(GOODS_URL);
+//     Object.entries(params).forEach(([key, value]) => {
+//       url.searchParams.append(key, value);
+//     });
+
+//     const response = await fetch(url);
+//     const data = await response.json();
+
+//     return data;
+//   }
+// );
 
 const goodsSlice = createSlice({
-  name: 'goods',
+  name: "goods",
   initialState: {
-    status: '',
+    status: "",
     goodsList: [],
     errors: null,
     page: 0,
@@ -59,45 +61,52 @@ const goodsSlice = createSlice({
     totalCount: null,
   },
 
+  reducers: {
+    setPage: (state, action) => {
+      state.page = action.payload;
+    }
+  },
+
   extraReducers: (builder) => {
     builder
       .addCase(fetchGender.pending, (state) => {
-        state.status = 'loading';  
+        state.status = "loading";
       })
       .addCase(fetchGender.fulfilled, (state, action) => {
-        state.status = 'success';
+        state.status = "success";
         state.goodsList = action.payload;
+        state.pages = 0;
+        state.totalCount = null;
       })
       .addCase(fetchGender.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = "failed";
         state.errors = action.error.message;
       })
       .addCase(fetchCategory.pending, (state) => {
-        state.status = 'loading';  
+        state.status = "loading";
       })
       .addCase(fetchCategory.fulfilled, (state, action) => {
-        state.status = 'success';
+        state.status = "success";
         state.goodsList = action.payload.goods;
-        state.page = action.payload.page;
         state.pages = action.payload.pages;
         state.totalCount = action.payload.totalCount;
       })
       .addCase(fetchCategory.rejected, (state, action) => {
-        state.status = 'failed';
-        state.errors = action.error.message;
-      })
-      .addCase(fetchTopProductCategory.pending, (state) => {
-        state.status = 'loading';  
-      })
-      .addCase(fetchTopProductCategory.fulfilled, (state, action) => {
-        state.status = 'success';
-        state.goodsList = action.payload.goods;
-      })
-      .addCase(fetchTopProductCategory.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = "failed";
         state.errors = action.error.message;
       });
-  }
+    // .addCase(fetchTopProductCategory.pending, (state) => {
+    //   state.status = 'loading';
+    // })
+    // .addCase(fetchTopProductCategory.fulfilled, (state, action) => {
+    //   state.status = 'success';
+    //   state.goodsList = action.payload.goods;
+    // })
+    // .addCase(fetchTopProductCategory.rejected, (state, action) => {
+    //   state.status = 'failed';
+    //   state.errors = action.error.message;
+    // });
+  },
 });
-
+export const { setPage } = goodsSlice.actions;
 export default goodsSlice.reducer;

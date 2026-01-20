@@ -19,10 +19,7 @@ export const Product = ( {id, pic, title, price, colors} ) => {
 
       <div className={s.row}>
         <p className={s.price}>руб {price}</p>
-
-        <button className={s.favorite}>
-          <BtnLike />
-        </button>
+        <BtnLike id={id}/>
       </div>
       <ColorList colors={colors}/>
     </article>

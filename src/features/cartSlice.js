@@ -1,0 +1,22 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+
+const cartItems = JSON.parse(localStorage.getItem('cart') || []);
+
+const cartSlice = createSlice({
+  name: 'cart',
+  initialState: {
+    cartItems,
+    countItems: cartItems.length,
+  },
+  reducers: {
+    addToCart(state, action) {
+      const {id, color, size, count} = action.payload;
+      const item = state.cartItems.find(
+        item => item.id === id && item.color === color && item.size === size
+      );
+    }
+  }
+});
+
+export default cartSlice.reducer;

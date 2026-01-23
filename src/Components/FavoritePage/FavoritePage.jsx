@@ -17,12 +17,15 @@ export const FavoritePage = () => {
   const favorites = useSelector(state => state.favorites);
 
   const page = usePageFromSearchParams(dispatch);
-  
+
   
   useEffect(() => {
     const param = {list: favorites};
+    
+    
     if (page) {
       param.page = page;
+      
     }
 
     dispatch(fetchCategory(param));
